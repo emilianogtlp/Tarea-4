@@ -1,19 +1,78 @@
-// Tarea 4.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
-
 #include <iostream>
-
+#include <fstream>
+#include <string>
+#include "Empleado.h"
+using namespace std;
 int main()
 {
-    std::cout << "Hello World!\n";
+    int i = 0;
+    int a, d, menu,ver,id;
+    int ejecutador = 1;
+    double c, b;
+    Empleado arreglo_empleados[20];
+    ifstream archivo_empleados;
+    archivo_empleados.open("Text.txt");
+    while (archivo_empleados >> a >> b >> c >> d)
+    {
+        arreglo_empleados[i].setId_empleado(a);
+        arreglo_empleados[i].setHoras_trabajadas(d);
+        arreglo_empleados[i].setSueldo_fijo(b);
+        arreglo_empleados[i].setSueldo_xhora(c);
+        i++;
+    }
+    while (ejecutador == 1) {
+        cout << "/////////////// Menu ///////////////" << endl;
+        cout << " 1.- Modificar sueldo fijo. " << endl;
+        cout << " 2.- Modificar sueldo por hora. " << endl;
+        cout << " 3.- Registra horas trabajadas. " << endl;
+        cout << " 4.- Calcular pago del empleado. " << endl;
+        cout << " 5.- Ver lista empleados. " << endl;
+        cout << " 6.- Salir. " << endl;
+        cin >> menu;
+        switch (menu)
+        {
+        case 1:
+            cout << "Por favor induzca un ID: " << endl;
+            cin >> id;
+            while (ver != 1)
+            {
+                for (int x = 0; x <= i; x++)
+                {
+                    if (arreglo_empleados[x].getId_empleado == id) {
+                        ver = 1;
+                        // aqui se ingresa el codigo de modificacion
+                    }
+                }
+                if (ver != 1) {
+                    cout << "Ha ingresado un ID invalido, porfavor ingrese otro ID: " << endl;
+                    cin >> id;
+                }
+            }
+            break;
+        case 2:
+
+            break;
+        case 3:
+
+            break;
+        case 4:
+
+            break;
+        case 5:
+            break;
+        case 6:
+            ejecutador++;
+            break;
+        default:
+            cout << " Opcion invalida, porfavor ingrese otra opcion. " << endl;
+            break;
+        }
+
+
+
+
+    }
+    return 0;
 }
 
-// Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
-// Depurar programa: F5 o menú Depurar > Iniciar depuración
 
-// Sugerencias para primeros pasos: 1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
-//   2. Use la ventana de Team Explorer para conectar con el control de código fuente
-//   3. Use la ventana de salida para ver la salida de compilación y otros mensajes
-//   4. Use la ventana Lista de errores para ver los errores
-//   5. Vaya a Proyecto > Agregar nuevo elemento para crear nuevos archivos de código, o a Proyecto > Agregar elemento existente para agregar archivos de código existentes al proyecto
-//   6. En el futuro, para volver a abrir este proyecto, vaya a Archivo > Abrir > Proyecto y seleccione el archivo .sln
